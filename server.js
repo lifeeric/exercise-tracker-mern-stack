@@ -27,6 +27,13 @@ connection.on('error', err => console.log(`Error: ${err}`))
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/exercises', require('./routes/api/exercises'));
 
+// Heroku
+
+if( process.env.NODE_ENV === 'production')
+{
+    app.use(express.static('client/build'))
+}
+
 // PORTS
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server is running on ${PORT}`));
