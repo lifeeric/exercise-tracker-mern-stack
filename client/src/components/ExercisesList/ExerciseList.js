@@ -14,7 +14,10 @@ export default class ExerciseList extends Component {
             .then(res => { this.setState({ exercises: res.data, loading: false}) 
             console.log(res.data)
         })
-            .catch( err => this.setState({loading: true}));
+            .catch( err => {
+                this.setState({loading: true})
+                console.log(err)
+            });
     };
 
     // Delete Exercise

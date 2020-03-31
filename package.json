@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon server",
-    "start": "if-env NODE_ENV=production && npm run dev",
+    "start": "npm run dev",
     "client": "cd client && npm run start"
   },
   "keywords": [],
