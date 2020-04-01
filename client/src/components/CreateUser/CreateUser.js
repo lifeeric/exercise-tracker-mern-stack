@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios from '../../axios-instance';
+
 
 export default (props) => {
 
@@ -12,8 +13,10 @@ export default (props) => {
     const FormSubmit = e => {
         e.preventDefault();
 
-        axios.post('http://localhost:5000/api/users', getUser);
-        props.history.push('/'); // redirect
+        axios.post('users', getUser)
+            .then(() => {
+                props.history.push('/'); // redirect
+            })
 
     }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Loader from '../Loader/Loader';
-import axios from 'axios';
+import axios from '../../axios-instance';
+
 
 export default class ExerciseList extends Component {
 
@@ -10,7 +11,7 @@ export default class ExerciseList extends Component {
     }
 
     componentDidMount () {
-        axios.get('http://localhost:5000/api/exercises')
+        axios.get('exercises')
             .then(res => { this.setState({ exercises: res.data, loading: false}) 
             console.log(res.data)
         })
@@ -22,7 +23,7 @@ export default class ExerciseList extends Component {
 
     // Delete Exercise
     deleteExcercise = (id) => {
-        axios.delete('http://localhost:5000/api/exercises/'+ id);
+        axios.delete('exercises/'+ id);
 
         this.setState(prevState => ({
             exercises: prevState.exercises.filter(ex => ex._id !== id)

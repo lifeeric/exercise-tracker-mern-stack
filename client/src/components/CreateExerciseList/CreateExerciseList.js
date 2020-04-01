@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Datepicker from 'react-datepicker';
-import axios from 'axios';
+import axios from '../../axios-instance';
 import "react-datepicker/dist/react-datepicker.css";
 
 export default class extends Component {
@@ -29,7 +29,7 @@ export default class extends Component {
 
         if ( uri.length )
         {
-                 axios.get('http://localhost:5000/api/exercises/'+uri)
+                 axios.get('exercises/'+uri)
                 .then(res => {
                     this.setState({
                             users: [res.data.username],
@@ -41,7 +41,7 @@ export default class extends Component {
             
         }
         else {
-            axios.get('http://localhost:5000/api/users/')
+            axios.get('users/')
                 .then(res => {
                     
                     if( res.data.length > 0 )
@@ -96,7 +96,7 @@ export default class extends Component {
             date: this.state.date
         };
         // send data
-        const uri = 'http://localhost:5000/api/exercises/';
+        const uri = 'exercises/';
         const id = this.props.location.search.substring(1);
         
         if( id )
@@ -106,8 +106,10 @@ export default class extends Component {
         }
         else
         {
-            axios.post(uri, exercise);
-             this.props.history.push('/');
+            axios.post(uri, exercise)
+                .then(() => {
+                    this.props.history.push('/');
+                });
         }
     }
 
