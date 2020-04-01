@@ -36,6 +36,7 @@ export default class extends Component {
                             duration: res.data.duration,
                         })
                 })
+                .catch(err => console.log('/users Mount create', err))
             
         }
         else {
@@ -50,6 +51,7 @@ export default class extends Component {
                         })
                     }
                 })
+                .catch(err => console.log('/users create', err))
         }
     }
 
@@ -100,14 +102,16 @@ export default class extends Component {
         if( id )
         {
             axios.put(uri + id, exercise)
-                .then(res => this.props.history.push('/'));
+                .then(() => this.props.history.push('/'))
+                .catch(err => console.log(err));
         }
         else
         {
             axios.post(uri, exercise)
                 .then(() => {
                     this.props.history.push('/');
-                });
+                })
+                .catch(err => console.log(err));
         }
     }
 
