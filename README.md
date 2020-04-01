@@ -1,4 +1,4 @@
-# Excersie Tracker App
+# Excersie Tracker App using MERN stack (Node, React, Express, MongoDB)
 
 Live Demo: https://exercises-track.herokuapp.com/
 
