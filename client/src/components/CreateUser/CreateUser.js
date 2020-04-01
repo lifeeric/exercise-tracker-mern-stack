@@ -17,7 +17,7 @@ export default (props) => {
             .then(() => {
                 props.history.push('/'); // redirect
             })
-            .catch(err => console.log('/users users', err))
+            .catch(err => console.log(err))
 
     }
 

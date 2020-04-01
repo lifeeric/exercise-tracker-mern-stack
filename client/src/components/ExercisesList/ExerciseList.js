@@ -12,20 +12,19 @@ export default class ExerciseList extends Component {
 
     componentDidMount () {
         axios.get('/exercises')
-            .then(res => { this.setState({ exercises: res.data, loading: false}) 
-            console.log(res.data)
+            .then(res => { this.setState({ exercises: res.data, loading: false})
         })
-            .catch( err => {
-                this.setState({loading: true})
-                console.log(err)
-            });
+        .catch( err => {
+            this.setState({loading: true})
+            console.log(err)
+        });
     };
 
     // Delete Exercise
     deleteExcercise = (id) => {
         axios.delete('/exercises/'+ id)
-            .then( () => console.log('list'))
-            .catch(err => console.log('Er List '+ err))
+            .then( _ =>  _)
+            .catch(err => console.log(err))
 
         this.setState(prevState => ({
             exercises: prevState.exercises.filter(ex => ex._id !== id)
