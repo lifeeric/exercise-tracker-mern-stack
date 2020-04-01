@@ -1,6 +1,7 @@
 const express = require('express');
 const cors    = require('cors');
 const mongoose= require('mongoose');
+const path    = require('path');
 
 require('dotenv').config();
 
@@ -32,6 +33,11 @@ app.use('/api/exercises', require('./routes/api/exercises'));
 if( process.env.NODE_ENV === 'production')
 {
     app.use(express.static('./client/build'))
+
+    // accessing direct url like exampel.com/user
+    app.use('/*', (req, res) => { 
+        return res.sendFile(path.join(__dirname, './client/build/index.html')); 
+    });
 }
 
 // PORTS
