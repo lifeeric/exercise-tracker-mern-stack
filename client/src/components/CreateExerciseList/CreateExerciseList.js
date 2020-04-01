@@ -21,15 +21,13 @@ export default class extends Component {
 
     // when the component injected
     componentDidMount () {
-        console.log('updated')
-
 
         let uri = String(this.props.location.search)
         uri = uri.substring(1);
 
         if ( uri.length )
         {
-                 axios.get('exercises/'+uri)
+                 axios.get('/exercises/'+uri)
                 .then(res => {
                     this.setState({
                             users: [res.data.username],
@@ -41,7 +39,7 @@ export default class extends Component {
             
         }
         else {
-            axios.get('users/')
+            axios.get('/users/')
                 .then(res => {
                     
                     if( res.data.length > 0 )
@@ -96,7 +94,7 @@ export default class extends Component {
             date: this.state.date
         };
         // send data
-        const uri = 'exercises/';
+        const uri = '/exercises/';
         const id = this.props.location.search.substring(1);
         
         if( id )

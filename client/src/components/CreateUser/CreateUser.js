@@ -13,7 +13,7 @@ export default (props) => {
     const FormSubmit = e => {
         e.preventDefault();
 
-        axios.post('users', getUser)
+        axios.post('/users', getUser)
             .then(() => {
                 props.history.push('/'); // redirect
             })
