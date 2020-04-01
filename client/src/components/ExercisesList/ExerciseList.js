@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Loader from '../Loader/Loader';
-import axios from '../../axios-instance';
+import axios from '../../axios';
 
 
 export default class ExerciseList extends Component {
