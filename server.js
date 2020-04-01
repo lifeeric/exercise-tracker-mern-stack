@@ -16,7 +16,7 @@ app.use(express.json());
 
 // mongoose
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(uri || 'mongodb://localhost:27017/exe_tracker', {useNewUrlParser: true, useUnifiedTopology: true});
 
 const connection = mongoose.connection;
 connection.once('open', () => console.log('MongoDB esatablished!'));
